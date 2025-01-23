@@ -26,7 +26,7 @@ const JobListing = ({job}) => {
       {/* btn show more / sshow less */}
       <button onClick={() => SetFullDescription((prevStat) => !prevStat)} className="text-gray-500 mb-2 hover:text-black">{ FullDescription ? 'show more' : 'show less' }</button>
 
-      <h3 className="text-blue-400 mb-2">{job.salary} / Year</h3>
+      <h3 className="text-blue-600 mb-2">{job.salary} / Year</h3>
 
       <div className="border border-gray-100 mb-5"></div>
 
@@ -36,7 +36,7 @@ const JobListing = ({job}) => {
           {job.location}
         </div>
         <Link
-          to={`/job/${job.id}`}
+          to={`/jobs/${job.id}`}
           className="h-[36px] bg-black hover:bg-gray-700 text-white px-4 py-2 rounded-lg text-center text-sm"
         >
          Read More

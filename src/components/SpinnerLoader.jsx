@@ -12,7 +12,7 @@ function SpinnerLoader({loading}) {
     color='#000'
     loading={loading}
     cssOverride={cssOverride}
-    isSize={150}/>
+    size={150}/>
   )
 }
 
