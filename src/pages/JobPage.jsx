@@ -17,7 +17,7 @@ const JobPage = () => {
             </div>
         </section>
 
-        <section class="bg-teal-400">
+        <section class="bg-teal-500">
             <div class="container m-auto py-10 px-6">
                 <div class="grid grid-cols-1 md:grid-cols-70/30 w-full gap-6">
                 <main>
