@@ -85,17 +85,17 @@
       }
     },
     {
-      "id": "f402",
-      "title": "Testing",
+      "id": "5728",
+      "title": "React / next",
       "type": "Remote",
       "location": "safi",
-      "description": "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv",
-      "salary": "Under $50K",
+      "description": "we need a developer in our company to help us",
+      "salary": "Over $200K",
       "company": {
-        "name": "devtol",
-        "description": "rfrfrferfefref",
-        "contactEmail": "devtol@tol.com",
-        "contactPhone": "0765432168"
+        "name": "techLead",
+        "description": "techLead is a startup",
+        "contactEmail": "techLead@gmil.com",
+        "contactPhone": "+212765432567"
       }
     }
   ]

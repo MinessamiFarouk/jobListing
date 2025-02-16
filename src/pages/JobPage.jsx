@@ -1,5 +1,6 @@
 import { useLoaderData, Link, useNavigate } from "react-router-dom"
 import { FaArrowLeft, FaMapMarker } from "react-icons/fa"
+import { toast } from "react-toastify"
 // import SpinnerLoader from "./SpinnerLoader"
 
 const JobPage = ({deleteJob}) => {
@@ -11,18 +12,20 @@ const JobPage = ({deleteJob}) => {
 
         if(confirm){
             deleteJob(jobId);
+            toast.success('the job delete successfully')
             return navigat('/jobs')
         }else{
+            toast.error('U Keep The Job a Life')
             return
         }
     }
 
     return (<>
         <section>
-            <div className="container m-auto py-6 px-6">
+            <div className="container m-auto py-4 px-6">
                 <Link
                 to="/jobs"
-                className="text-blue-600 hover:text-gray-600 flex items-center"
+                className="text-teal-700 text-xl hover:text-gray-600 flex items-center"
                 >
                 <FaArrowLeft className="mr-2" /> Back to Job Listings
                 </Link>
@@ -67,7 +70,7 @@ const JobPage = ({deleteJob}) => {
                 <aside>
                     {/* <!-- Company Info --> */}
                     <div className="bg-white p-6 rounded-lg shadow-md">
-                    <h3 className="text-xl font-bold mb-6">Company Info</h3>
+                    <h3 className="text-2xl font-bold mb-6">Company Info</h3>
 
                     <h2 className="text-2xl">{job.company.name}</h2>
 
@@ -75,7 +78,7 @@ const JobPage = ({deleteJob}) => {
                         {job.company.description}
                     </p>
 
-                    <hr className="my-4" />
+                    <hr className="my-2" />
 
                     <h3 className="text-xl">Contact Email:</h3>
 
@@ -85,14 +88,14 @@ const JobPage = ({deleteJob}) => {
 
                     <h3 className="text-xl">Contact Phone:</h3>
 
-                    <p className="my-2 bg-indigo-100 p-2 font-bold">{job.company.contactPhone}</p>
+                    <p className="mt-2 bg-indigo-100 p-2 font-bold">{job.company.contactPhone}</p>
                     </div>
 
                     {/* <!-- Manage --> */}
                     <div className="bg-white p-6 rounded-lg shadow-md mt-6">
                     <h3 className="text-xl font-bold mb-6">Manage Job</h3>
                     <Link
-                        to="/add-job.html"
+                        to={`/edite-job/${job.id}`}
                         className="bg-indigo-500 hover:bg-indigo-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
                         >Edit Job</Link
                     >

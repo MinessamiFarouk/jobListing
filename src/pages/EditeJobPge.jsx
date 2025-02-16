@@ -1,25 +1,29 @@
+import { useLoaderData, Link, useNavigate, useParams } from "react-router-dom"
 import { useState } from "react"
-import { toast } from "react-toastify"
-import { useNavigate } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
+import { toast } from "react-toastify";
 
-const AddJobPage = ({addNewJob}) => {
+function EditeJobPge({editedJobSubmit}) {
+  const job = useLoaderData()
+  const {id} = useParams()
 
-  const [title, setTitle] = useState('');
-  const [type, setType] = useState('Full-Time');
-  const [location, setLocation] = useState('');
-  const [description, setDescription] = useState('');
-  const [salary, setSalary] = useState('Under $50K');
-  const [companyName, setCompanyName] = useState('');
-  const [companyDescription, setCompanyDescription] = useState('');
-  const [contactEmail, setContactEmail] = useState('');
-  const [contactPhone, setContactPhone] = useState('');
+  const [title, setTitle] = useState(job.title);
+  const [type, setType] = useState(job.type);
+  const [location, setLocation] = useState(job.location);
+  const [description, setDescription] = useState(job.description);
+  const [salary, setSalary] = useState(job.salary);
+  const [companyName, setCompanyName] = useState(job.company.name);
+  const [companyDescription, setCompanyDescription] = useState(job.company.description);
+  const [contactEmail, setContactEmail] = useState(job.company.contactEmail);
+  const [contactPhone, setContactPhone] = useState(job.company.contactPhone);
 
   const navigate = useNavigate()
 
   const submitForm = (e) => {
     e.preventDefault();
 
-    const newJob = {
+    const editedJob = {
+      id,
       title,
       type,
       location,
@@ -33,20 +37,31 @@ const AddJobPage = ({addNewJob}) => {
       }
     }
 
-    addNewJob(newJob);
-    toast.success('the job add successfully')
+    editedJobSubmit(editedJob);
+    toast.success('the job Edited successfully')
     
-    return navigate("/jobs")
+    return navigate(`/jobs/${id}`)
   }
 
   return (
+    <>
+      <section>
+        <div className="container m-auto py-4 px-6">
+            <Link
+            to="/jobs"
+            className="text-teal-700 text-xl hover:text-gray-600 flex items-center"
+            >
+            <FaArrowLeft className="mr-2" /> Back to Job Listings
+            </Link>
+        </div>
+    </section>
     <section className="bg-teal-500">
-      <div className="container m-auto max-w-2xl py-24">
+      <div className="container m-auto max-w-2xl py-10">
         <div
-          className="bg-white px-6 py-8 mb-4 shadow-xl rounded-xl border m-4 md:m-0"
+          className="bg-white px-6 py-4 mb-4 shadow-xl rounded-xl border m-4 md:m-0"
         >
           <form onSubmit={submitForm}>
-            <h2 className="text-teal-700 text-4xl text-center font-bold mb-7">Add Job</h2>
+            <h2 className="text-teal-700 text-4xl text-center font-bold mb-10">Edite Job</h2>
 
             <div className="mb-4">
               <label htmlFor="type" className="block text-gray-700 font-bold mb-2"
@@ -214,14 +229,15 @@ const AddJobPage = ({addNewJob}) => {
                 className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
                 type="submit"
               >
-                Add Job
+                Edite Job
               </button>
             </div>
           </form>
         </div>
       </div>
     </section>
+    </>
   )
 }
 
-export default AddJobPage
+export default EditeJobPge
